@@ -1,0 +1,72 @@
+import pgzrun
+WIDTH = 640
+HEIGHT = 640
+CELL_SIZE = 80
+levels = [
+    [
+        [0, 0, 1, 0, 0, 0, 1, 0],
+        [1, 0, 1, 0, 1, 0, 1, 0],
+        [1, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 1, 0, 1, 0],
+        [0, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 1, 0, 1, 1, 1, 2],
+    ],
+    [
+        [0, 1, 0, 0, 0, 1, 0, 0],
+        [0, 1, 0, 1, 0, 1, 0, 1],
+        [0, 0, 0, 1, 0, 0, 0, 1],
+        [1, 1, 0, 1, 1, 1, 0, 1],
+        [0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 1, 1, 1, 0, 1, 1, 0],
+        [0, 0, 0, 1, 0, 0, 0, 0],
+        [1, 1, 0, 0, 1, 1, 1, 2],
+    ],
+    [
+        [0, 0, 0, 1, 0, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 1, 1, 1, 1, 0, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0],
+        [1, 1, 1, 1, 1, 0, 0, 2],
+    ],
+]
+current_level=0
+maze=levels[current_level]
+
+player_row=0
+player_col=0
+
+game_won = False
+
+player = Actor("bee")
+
+def draw():
+    screen.fill((30,30,40))
+
+    for i in range(8):
+        for j in range(8):
+            x=j*CELL_SIZE
+            y=i*CELL_SIZE
+
+            rect=Rect((x,y),(CELL_SIZE,CELL_SIZE))
+
+            if maze[i][j] == 1:
+                screen.draw.filled_rect(rect,(0,150,140))
+            else:
+                screen.draw.filled_rect(rect,(255,248,220))
+
+            screen.draw.rect(rect, (200, 200, 200))
+
+if maze[i][j] == 2:
+    screen.draw.filled_rect(rect, (255, 215, 0))
+
+    screen.draw.text(
+        "GOAL",
+        center=(x + 40, y + 40),
+        fontsize=24,
+        color="black"
+    )     
