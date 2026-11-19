@@ -64,3 +64,34 @@ def draw(screen):
     screen.draw.textbox(
         question[0].
     )
+    screen.draw.textbox(
+        question[0]strip(),question_box,
+        color="white",shadow=(0.0,0.5),
+        scolor="dim grey"
+    )
+
+    index = 1
+    for answer_box in answer_boxes:
+        screen.draw.textbox(question[index].strip(),answer_box,color="black")
+        index += 1
+
+
+    def update():
+        move_marquee()
+
+    def move_marquee():
+        marquee_box.x -= 2
+        if marquee_box.left = WIDTH
+
+
+    def read_question_file():
+        global question_count,questions
+        with open(question_file_name,"r")as q_file:
+            for q in q_file:
+                questions.append(q)
+                question_count += 1
+    def read_next_question():
+        global question_index
+        if question_index < len(questions):
+            q = questions[question_index]
+            
